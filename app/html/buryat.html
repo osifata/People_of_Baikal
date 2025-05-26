@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <script src="../scripts/server.js"></script>
+    <script src="../scripts/highlight.js"></script>
+    <script src="../scripts/keywords.js"></script>
+    <script src="../scripts/main.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div id="loading-screen">
+      <div id="progress-text">Загрузка... 0%</div>
+      <div class="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+
+    <div class="subtitle-container">
+      <p id="answerText"></p>
+    </div>
+
+    <a-scene embedded arjs wait-for-ar>
+      <a-assets timeout="10000">
+        <a-asset-item id="buryat" src="https://cdn.glitch.me/00f4b032-62b0-4e9d-b75b-91ae2acabddf/Buriatka.glb?v=1746255312622"></a-asset-item>
+        <a-asset-item id="scene" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/scene_buryat.glb?v=1747201356300"></a-asset-item>
+        <a-asset-item id="buz" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/buzzi.glb?v=1744702712850"></a-asset-item>
+        <a-asset-item id="fish" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/nama.glb?v=1744702728269"></a-asset-item>
+        <a-asset-item id="bread" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/bread.glb?v=1744702700020"></a-asset-item>
+      </a-assets>
+
+      <a-marker id="marker-buryat" type="pattern" url="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/butyat.patt?v=1744703011313">
+        <a-entity id="model_buryat" data-rotation="0 0 0" data-scale="0.45 0.45 0.45" data-position="0 0.2 0.3" rotation="0 0 0" scale="0.45 0.45 0.45" position="0 0.2 0.3" gltf-model="#buryat" animation-mixer="clip: idle; loop: repeat" visible="false"></a-entity>
+        <a-entity id="model_scene" data-rotation="0 0 0" data-scale="1.8 1.8 1.8" data-position="0 0 -5" rotation="0 0 0" scale="1.8 1.8 1.8" position="0 0 -5" gltf-model="#scene" visible="false"></a-entity>
+        <a-entity id="model_buz"  data-rotation="0 0 0" data-scale="1.8 1.8 1.8" data-position="0 0.01 -5" rotation="0 0 0" scale="1.8 1.8 1.8" position="0 0.01 -5" gltf-model="#buz" visible="false"></a-entity>
+        <a-entity id="model_fish" data-rotation="0 0 0" data-scale="1.8 1.8 1.8" data-position="0 0.01 -5" rotation="0 0 0" scale="1.8 1.8 1.8" position="0 0.01 -5" gltf-model="#fish" visible="false"></a-entity>
+        <a-entity id="model_bread" data-rotation="0 0 0" data-scale="1.8 1.8 1.8" data-position="0 0.01 -5" rotation="0 0 0" scale="1.8 1.8 1.8" position="0 0.01 -5" gltf-model="#bread" visible="false"></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <div class="input-container">
+      <input type="text" id="questionInput" placeholder="Введите ваше сообщение..." aria-label="Введите ваше сообщение">
+      <button onclick="submitQuestion()">Отправить</button>
+      <button class="microphone-button" aria-label="Запись" 
+              onmousedown="startRecording()" 
+              onmouseup="stopRecording()" 
+              ontouchstart="startRecording()" 
+              ontouchend="stopRecording()">
+          <svg class="microphone-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+              <path fill="white" d="M12 14c1.659 0 3-1.343 3-3V6c0-1.657-1.341-3-3-3S9 4.343 9 6v5c0 1.657 1.341 3 3 3zm6-3c0 3.313-2.687 6-6 6s-6-2.687-6-6h-2c0 4.418 3.582 8 8 8s8-3.582 8-8h-2z"/>
+          </svg>
+      </button>
+    </div>
+    <script src="../scripts/voice.js"></script>
+    <script src="../scripts/loaded.js"></script>
+  </body>
+</html>

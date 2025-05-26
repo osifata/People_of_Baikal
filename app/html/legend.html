@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <script src="../scripts/server.js"></script>
+    <script src="../scripts/highlight.js"></script>
+    <script src="../scripts/keywords.js"></script>
+    <script src="../scripts/main.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div id="loading-screen">
+      <div id="progress-text">Загрузка... 0%</div>
+      <div class="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+
+    <div class="subtitle-container">
+      <p id="answerText"></p>
+    </div>
+
+    <a-scene embedded arjs>
+      <a-assets timeout="10000">
+        <a-asset-item id="legenda" src="https://cdn.glitch.global/00f4b032-62b0-4e9d-b75b-91ae2acabddf/Legend.glb?v=1745819055945"></a-asset-item>
+        <a-asset-item id="koster" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/%D0%BA%D0%BE%D1%81%D1%82%D0%B5%D1%80.glb?v=1747206183554"></a-asset-item>
+        <a-asset-item id="bocka" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/%D0%BE%D0%BC%D1%83%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B1%D0%BE%D1%87%D0%BA%D0%B0.glb?v=1747207484992"></a-asset-item>
+        <a-asset-item id="swan" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/swan.glb?v=1747206223138"></a-asset-item>
+        <a-asset-item id="stonk" src="https://cdn.glitch.global/00f4b032-62b0-4e9d-b75b-91ae2acabddf/stonks.glb?v=1741941184130"></a-asset-item>
+        <a-asset-item id="field" src="https://cdn.glitch.global/00f4b032-62b0-4e9d-b75b-91ae2acabddf/%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D0%BA%D0%B0.glb?v=1741938205292"></a-asset-item>
+      </a-assets>
+      
+      <a-marker id="marker-legends" type="pattern" url="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/leg.patt?v=1744604830800">
+        <a-entity id="model_field" data-rotation="0 0 0" data-scale="0.35 0.4 0.35" data-position="0 0 0" rotation="0 0 0" scale="0.35 0.4 0.35" position="0 0 0" gltf-model="#field"></a-entity>
+        <a-entity id="model_legenda" data-rotation="0 0 0" data-scale="0.45 0.45 0.45" data-position="-0.2 0.5 -0.2" rotation="0 0 0" scale="0.45 0.45 0.45" position="-0.2 0.5 -0.2" gltf-model="#legenda" animation-mixer="clip: idle; loop: repeat"></a-entity>
+        <a-entity id="model_koster" data-rotation="0 -15 0" data-scale="0.15 0.15 0.15" data-position="0.2 0.5 -0.2" rotation="0 -15 0" scale="0.15 0.15 0.15" position="0.2 0.5 -0.2" gltf-model="#koster"></a-entity>
+        <a-entity id="model_swan" data-rotation="0 180 10" data-scale="0.1 0.1 0.1" data-position="-1 0.1 0.4" rotation="0 180 10" scale="0.1 0.1 0.1" position="-1 0.1 0.4" gltf-model="#swan"></a-entity>
+        <a-entity id="model_bocka" data-rotation="0 15 0" data-scale="0.015 0.015 0.015" data-position="1 0.1 0.4" rotation="0 15 0" scale="0.015 0.015 0.015" position="1 0.1 0.4" gltf-model="#bocka"></a-entity>
+        <a-entity id="model_stonk" data-rotation="0 0 0" data-scale="0.15 0.15 0.15" data-position="0 0.1 0.5" gltf-model="#stonk"></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <div class="input-container">
+      <input type="text" id="questionInput" placeholder="Введите ваше сообщение..." aria-label="Введите ваше сообщение">
+      <button onclick="submitQuestion()">Отправить</button>
+      <button class="microphone-button" aria-label="Запись" 
+              onmousedown="startRecording()" 
+              onmouseup="stopRecording()" 
+              ontouchstart="startRecording()" 
+              ontouchend="stopRecording()">
+          <svg class="microphone-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+              <path fill="white" d="M12 14c1.659 0 3-1.343 3-3V6c0-1.657-1.341-3-3-3S9 4.343 9 6v5c0 1.657 1.341 3 3 3zm6-3c0 3.313-2.687 6-6 6s-6-2.687-6-6h-2c0 4.418 3.582 8 8 8s8-3.582 8-8h-2z"/>
+          </svg>
+      </button>
+    </div>
+
+    <script src="../scripts/voice.js"></script>
+    <script src="../scripts/loaded.js"></script>
+  </body>
+</html>
+

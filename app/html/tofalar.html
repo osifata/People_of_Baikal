@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <script src="../scripts/server.js"></script>
+    <script src="../scripts/highlight.js"></script>
+    <script src="../scripts/keywords.js"></script>
+    <script src="../scripts/main.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div id="loading-screen">
+      <div id="progress-text">Загрузка... 0%</div>
+      <div class="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+    <div class="subtitle-container">
+      <p id="answerText"></p>
+    </div>
+    <a-scene embedded arjs>
+      <a-assets timeout="10000">
+       <a-asset-item id="tofalar" src="https://cdn.glitch.global/00f4b032-62b0-4e9d-b75b-91ae2acabddf/Tofalar.glb?v=1746254461843"></a-asset-item>
+        <a-asset-item id="buben" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/buben.glb?v=1747644769891"></a-asset-item>
+        <a-asset-item id="b_mask" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/m_b.glb?v=1747644881476"></a-asset-item>
+        <a-asset-item id="e_mask" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/m_e.glb?v=1747645002022"></a-asset-item>
+        <a-asset-item id="medal" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/medal.glb?v=1747645151755"></a-asset-item>
+        <a-asset-item id="plet" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/plet.glb?v=1747645245929"></a-asset-item>
+        <a-asset-item id="scene" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/tof_scene.glb?v=1747210207932"></a-asset-item>
+        <a-asset-item id="fish" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/fish.glb?v=1747208763587"></a-asset-item>
+        <a-asset-item id="vedro" src="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/vedro.glb?v=1747209835612"></a-asset-item>
+      </a-assets>
+      <a-marker id="marker-tof" type="pattern" url="https://cdn.glitch.global/6d784e08-a317-43c7-839b-abf13c2f9b20/tof.patt?v=1744698745866">
+       <a-entity id="model_tofala" data-rotation="0 0 0" data-scale="0.45 0.45 0.45" data-position="0 0.12 0.5" rotation="0 0 0" scale="0.45 0.45 0.45" position="0 0.12 0.5" gltf-model="#tofalar" animation-mixer="clip: idle; loop: repeat"></a-entity>
+        <a-entity id="model_scene" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#scene"></a-entity>
+        <a-entity id="model_buben" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#buben"></a-entity>
+        <a-entity id="model_b_mask" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#b_mask"></a-entity>
+        <a-entity id="model_e_mask" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#e_mask"></a-entity>
+        <a-entity id="model_medal" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#medal"></a-entity>
+        <a-entity id="model_plet" data-rotation="0 0 0" data-scale="0.5 0.5 0.5" data-position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5" position="0 0 0" gltf-model="#plet"></a-entity>
+        <a-entity id="model_fish" data-rotation="0 0 90" data-scale="0.02 0.02 0.02" data-position="-1.78 0.3 0.1" rotation="0 0 90" scale="0.02 0.02 0.02" position="-1.78 0.3 0.1" gltf-model="#fish"></a-entity>
+        <a-entity id="model_vedro" data-rotation="0 0 0" data-scale="0.05 0.05 0.05" data-position="-1.5 0.1 0.6" rotation="0 0 0" scale="0.05 0.05 0.05" position="-1.5 0.1 0.6" gltf-model="#vedro"></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <div class="input-container">
+      <input type="text" id="questionInput" placeholder="Введите ваше сообщение..." aria-label="Введите ваше сообщение">
+      <button onclick="submitQuestion()">Отправить</button>
+      <button class="microphone-button" aria-label="Запись" 
+              onmousedown="startRecording()" 
+              onmouseup="stopRecording()" 
+              ontouchstart="startRecording()" 
+              ontouchend="stopRecording()">
+          <svg class="microphone-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+              <path fill="white" d="M12 14c1.659 0 3-1.343 3-3V6c0-1.657-1.341-3-3-3S9 4.343 9 6v5c0 1.657 1.341 3 3 3zm6-3c0 3.313-2.687 6-6 6s-6-2.687-6-6h-2c0 4.418 3.582 8 8 8s8-3.582 8-8h-2z"/>
+          </svg>
+      </button>
+    </div>
+    <script src="../scripts/voice.js"></script>
+    <script src="../scripts/loaded.js"></script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  z-index: 9999;
+}
+
+.progress-container {
+  width: 60%;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #0f0;
+  transition: width 0.2s;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Ширина по умолчанию для мобильных устройств */
+    max-width: 600px; /* Максимальная ширина для больших экранов */
+}
+
+.input-container input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-container input[type="text"]:focus {
+    border-color: #0088cc; /* Цвет рамки при фокусе */
+}
+
+.input-container button {
+    padding: 10px 15px;
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+    background-color: #007bb5; /* Цвет кнопки при наведении */
+}
+
+.microphone-button {
+    width: 50px; /* Уменьшаем размер для мобильных устройств */
+    height: 40px;
+    background-color: #42aaff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    position: relative;
+}
+
+.microphone-button.recording::before,
+.microphone-button.recording::after {
+    content: '';
+    position: absolute;
+    border: 2px solid #42aaff;
+    border-radius: 50%;
+    animation: ripple 1.5s infinite;
+}
+
+.microphone-button.recording::before {
+    width: 50px;
+    height: 50px;
+    animation-delay: 0s;
+}
+
+.microphone-button.recording::after {
+    width: 70px;
+    height: 70px;
+    animation-delay: 0.5s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.subtitle-container {
+    position: fixed; /* Закрепляем контейнер внизу страницы */
+    bottom: 100px; /* Отступ от нижней части экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Смещение влево на половину ширины контейнера */
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Отступы внутри контейнера */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
+    z-index: 1000; /* Установка высокого z-index, чтобы контейнер был сверху */
+    text-align: center; /* Центрируем текст */
+    font-size: 16px; /* Размер шрифта */
+    line-height: 1.5; /* Высота строки для лучшей читаемости */
+    width: 90%; /* Ширина контейнера (90% от ширины экрана) */
+    max-width: 600px; /* Максимальная ширина для больших экранов */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .input-container {
+        width: 80%; /* Увеличиваем ширину для мобильных устройств */
+        padding: 8px; /* Уменьшаем отступы */
+    }
+
+    .input-container input[type="text"] {
+        padding: 8px; /* Уменьшаем отступы для мобильных устройств */
+    }
+
+    .input-container button {
+        padding: 8px 12px; /* Уменьшаем отступы для мобильных устройств */
+    }
+
+    .microphone-button {
+        width: 40px; /* Увеличиваем размер для мобильных устройств */
+        height: 40px;
+        margin-left: 5px; /* Уменьшаем отступ слева */
+    }
+
+    .subtitle-container {
+        bottom: 80px; /* Уменьшаем отступ для мобильных устройств */
+        font-size: 14px; /* Уменьшаем размер шрифта */
+        padding: 8px 16px; /* Уменьшаем отступы */
+    }
+}
+
+@media (max-width: 480px) {
+    .input-container {
+        width: 100%; /* Занимаем всю ширину экрана */
+        bottom: 2px; /* Прижимаем к нижней части экрана */
+    }
+
+    .input-container input[type="text"] {
+        margin-right: 2px; /* Уменьшаем отступы */
+    }
+
+   .microphone-button {
+        width: 50px; /* Увеличиваем размер для очень маленьких экранов */
+        height: 50px;
+/*         margin-left: 5px; Возвращаем отступ слева */
+    }
+
+    .subtitle-container {
+        bottom: 70px; /* Уменьшаем отступ для очень маленьких экранов */
+        font-size: 12px; /* Уменьшаем размер шрифта */
+        padding: 6px 12px; /* Уменьшаем отступы */
+    }
+}
