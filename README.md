@@ -10,11 +10,11 @@
 
 ## ИЛЛЮСТРАЦИИ ДЛЯ ДОСТУПА 🎴
 
-| Cat pics                            | Dog pics                            |
+| Местные жители                            | Ученые                            |
 | ----------------------------------- | ----------------------------------- |
-| ![Image](https://github.com/user-attachments/assets/b6d384b0-6a67-4af8-8f9a-fde04c7c9a59) | ![Image](https://github.com/user-attachments/assets/7fb9c251-24e1-45b2-9dc0-692c20e42612) |
+| ![Image](https://github.com/user-attachments/assets/b6d384b0-6a67-4af8-8f9a-fde04c7c9a59) | ![Image](https://github.com/user-attachments/assets/89879d10-ca9d-4201-b60a-ab3f43fc91c0) |
 | ![Image](https://github.com/user-attachments/assets/82831aa9-8b2f-42e1-805b-5f295377731c) | ![Image](https://github.com/user-attachments/assets/155ec811-b6f5-410b-b6f0-a5aa81b55a99) |
-| ![Image](https://github.com/user-attachments/assets/89879d10-ca9d-4201-b60a-ab3f43fc91c0) | ![Image](https://github.com/user-attachments/assets/f0e2724c-732a-4b43-a2f8-a660ba2eb263) |
+| ![Image](https://github.com/user-attachments/assets/7fb9c251-24e1-45b2-9dc0-692c20e42612) | ![Image](https://github.com/user-attachments/assets/f0e2724c-732a-4b43-a2f8-a660ba2eb263) |
 | ![Image](https://github.com/user-attachments/assets/e4e87319-3851-45cd-ad22-fc71f54894a8) |  |
 
 ## ДЕМОНСТРАЦИЯ РАБОТЫ 📷
